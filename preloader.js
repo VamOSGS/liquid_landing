@@ -1,8 +1,4 @@
 const preloader = document.querySelector('.preloader');
-const imgs = document.querySelectorAll('img');
-console.log(imgs);
-
-
 
 document.onreadystatechange = () => {
   if (document.readyState == 'complete') {

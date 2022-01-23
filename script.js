@@ -1,7 +1,8 @@
 const li = document.querySelectorAll('li');
 const button = document.querySelector('#GET_BUTTON');
 const popup = document.querySelector('.popup');
-
+const menuBtn = document.querySelector('.menu-btn');
+const nav = document.querySelector('.navigation');
 li.forEach(item => {
   item.setAttribute('data-hover', item.textContent);
 });
@@ -18,4 +19,7 @@ popup.onclick = item => {
     popup.classList.remove('active');
 };
 
-
+menuBtn.onclick = () => {
+  menuBtn.classList.toggle('menuOpen');
+  nav.classList.toggle('mobileNav');
+};

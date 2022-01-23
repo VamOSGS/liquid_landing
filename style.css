@@ -12,7 +12,6 @@ body {
   background-size: cover;
   overflow: hidden;
 }
-
 .popup {
   display: flex;
   position: absolute;
@@ -71,15 +70,32 @@ img {
 header {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
   margin: 4%;
   font-weight: 500;
+}
+.menu-btn {
+  cursor: pointer;
+  display: none;
+  position: absolute;
+}
+.menu-btn:hover span:nth-child(2) {
+  transform: translate(6px);
+}
+header .menu-btn span {
+  display: block;
+  width: 45px;
+  height: 1px;
+  background: white;
+  margin: 15px 0;
+  transition: 0.3s;
+}
+.menu-btn:active span {
+  background: rgb(209, 209, 209);
 }
 
 header nav ul {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
   overflow: hidden;
 }
 header nav ul li {
@@ -141,7 +157,7 @@ header picture::after {
   opacity: 0.3;
 }
 header picture img {
-  width: 25%;
+  width: 14vw;
 }
 main {
   display: flex;
@@ -244,7 +260,9 @@ button:active {
   flex-direction: column;
   align-items: flex-end;
   margin-right: 6%;
-  margin-top: -3%;
+  position: absolute;
+  right: 0;
+  bottom: 5%;
 }
 
 #social::after {
@@ -335,5 +353,105 @@ button:active {
     transform: scale(0.9);
     transform: skewX(-5deg);
     filter: brightness(0.5);
+  }
+}
+
+@media only screen and (max-width: 1366px) {
+  .left h1 {
+    font-size: 4.5em;
+  }
+  .left h3 {
+    font-size: 23px;
+  }
+  .right h2 {
+    font-size: 2em;
+  }
+  .right h3 {
+    font-size: 17px;
+  }
+  .right p {
+    font-size: 13px;
+  }
+  button {
+    font-size: 16px;
+    padding: 8px 26px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  header {
+    justify-content: center;
+  }
+  header picture img {
+    width: 20vw;
+  }
+  nav {
+    display: none;
+  }
+  .left h3,
+  .right p {
+    display: none;
+  }
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+  .right {
+    width: 90%;
+    text-align: center;
+    align-items: center;
+  }
+  #social {
+    transform: rotate(270deg);
+    right: 12%;
+    bottom: 0%;
+    margin: 0;
+    transition: 0.3s;
+  }
+  button {
+    margin: 0;
+  }
+  .menu-btn {
+    display: block;
+    right: 5%;
+    z-index: 3;
+  }
+  .menuOpen span:first-child {
+    transform: rotate(45deg);
+    transform-origin: left;
+  }
+  .menuOpen span:nth-child(2) {
+    opacity: 0;
+  }
+  .menuOpen span:last-child {
+    transform: rotate(135deg) translate(8px, 10px);
+    transform-origin: right;
+  }
+  .mobileNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000000db;
+    position: absolute;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1;
+  }
+  .mobileNav ul {
+    flex-direction: column;
+  }
+  .mobileNav ul li::after,
+  .mobileNav ul li::before {
+    display: none;
+  }
+  .mobileNav ul li:hover {
+    color: rgb(136, 136, 136);
+    transform: none;
+  }
+  .mobileNav ul li {
+    margin: 15px 0;
+    font-size: 16px;
   }
 }
