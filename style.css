@@ -12,7 +12,14 @@ body {
   background-size: cover;
   overflow: hidden;
 }
-
+*::selection {
+  color: red;
+  background-color: rgba(255, 0, 119, 0.267);
+}
+img {
+  pointer-events: none;
+  user-select: none;
+}
 header {
   display: flex;
   justify-content: space-between;
@@ -25,11 +32,51 @@ header nav ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 header nav ul li {
   cursor: pointer;
   margin: 0 40px;
+  box-sizing: border-box;
+  position: relative;
+  transition: 0.5s;
 }
+header nav ul li::after {
+  content: attr(data-hover);
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  transition: 0.2s;
+}
+header nav ul li::before {
+  content: '';
+  width: 100%;
+  height: 55%;
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  transition: 0.5s;
+  background: #0022ff;
+  border-radius: 46px;
+  opacity: 0;
+  filter: blur(3px) brightness(1.75);
+}
+header nav ul li:hover {
+  transform: translateY(100%);
+}
+header nav ul li:hover > header nav ul li::after {
+  top: 0;
+}
+header nav ul li:hover::before {
+  background: rgba(181, 43, 223, 0.678);
+  top: -15px;
+  opacity: 0.6;
+  transform: scale(1.1);
+}
+
 header picture::after {
   content: ' ';
   display: block;
@@ -40,7 +87,7 @@ header picture::after {
   background-repeat: no-repeat;
   z-index: -2;
   position: fixed;
-  animation: bgEffectLogo 5s ease-in-out infinite alternate-reverse;
+  animation: bgEffectLogo 5s linear infinite alternate-reverse;
   top: -100%;
   left: -58%;
   opacity: 0.3;
@@ -128,6 +175,19 @@ h3 {
   width: max-content;
   cursor: pointer;
   font-weight: 400;
+  transition: 0.4s;
+  border: 1px rgb(255, 255, 255) solid;
+}
+
+.right button:hover {
+  background: transparent;
+  color: white;
+}
+
+.right button:active {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
 }
 
 #social {
@@ -159,6 +219,29 @@ h3 {
   margin: 10px 0;
   cursor: pointer;
 }
+#social a {
+  position: relative;
+}
+#social a::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  z-index: -1;
+  transform: scale(0);
+  transition: 0.3s;
+  box-shadow: none;
+  filter: blur(15px);
+
+}
+#social a:hover::after {
+  transform: scale(0.5);
+  box-shadow: 0 0 10px 5px #fff, 0 0 15px 10px #f0f, 0 0 10px 5px #0ff;
+}
+
 #social img:last-child {
   margin-bottom: 0;
 }
@@ -168,21 +251,25 @@ h3 {
     opacity: 0.6;
     transform: scale(1.2);
     transform: skewX(5deg);
+    filter: hue-rotate(20deg);
   }
   100% {
     opacity: 1;
     transform: scale(0.9);
     transform: skewX(-5deg);
+    filter: hue-rotate(0);
   }
 }
 @keyframes bgEffect2 {
   0% {
     opacity: 0.6;
     transform: scale(1.2);
+    filter: contrast(1.75) brightness(1.7);
   }
   100% {
     opacity: 1;
     transform: scale(1);
+    filter: contrast(1) brightness(1);
   }
 }
 @keyframes bgEffectLogo {
@@ -190,13 +277,16 @@ h3 {
     opacity: 0.2;
     transform: scale(1.2);
     transform: skewX(5deg);
+    filter: brightness(1) hue-rotate(0);
   }
   50% {
     opacity: 0.5;
+    filter: hue-rotate(-0.25tur);
   }
   100% {
     opacity: 0.4;
     transform: scale(0.9);
     transform: skewX(-5deg);
+    filter: brightness(0.5);
   }
 }
