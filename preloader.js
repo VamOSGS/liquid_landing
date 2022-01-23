@@ -1,5 +1,10 @@
 const preloader = document.querySelector('.preloader');
 
 document.onreadystatechange = () => {
-  if (document.readyState == 'complete') preloader.classList.add('closing');
+  preloader.classList.add('closing');
+  if (document.readyState == 'complete') {
+    setTimeout(() => {
+      preloader.style.display = "none";
+    }, 600);
+  }
 };
