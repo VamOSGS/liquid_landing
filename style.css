@@ -30,6 +30,21 @@ header nav ul li {
   cursor: pointer;
   margin: 0 40px;
 }
+header picture::after {
+  content: ' ';
+  display: block;
+  width: 218%;
+  height: 200%;
+  background-image: url(./img/logo_effect.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -2;
+  position: fixed;
+  animation: bgEffectLogo 5s ease-in-out infinite alternate-reverse;
+  top: -100%;
+  left: -58%;
+  opacity: 0.3;
+}
 header picture img {
   width: 25%;
 }
@@ -57,7 +72,9 @@ main {
   top: 10%;
   left: 5%;
 }
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 0;
 }
 .left h1 {
@@ -80,13 +97,13 @@ h1, h2, h3 {
   width: 35%;
 }
 
-.right h2  {
+.right h2 {
   font-weight: 400;
   font-size: 3em;
   letter-spacing: 13px;
 }
 
-.right h3  {
+.right h3 {
   font-weight: 500;
   font-size: 25px;
   word-spacing: 5px;
@@ -98,7 +115,7 @@ h1, h2, h3 {
   font-weight: 300;
   font-size: 21px;
   word-spacing: 5px;
-  width: 80%; 
+  width: 80%;
 }
 
 .right button {
@@ -118,15 +135,32 @@ h1, h2, h3 {
   justify-content: flex-end;
   flex-direction: column;
   align-items: flex-end;
-  margin-right: 5%;
+  margin-right: 6%;
+  margin-top: -3%;
+}
+
+#social::after {
+  content: ' ';
+  display: block;
+  width: 60%;
+  height: 80%;
+  background-image: url(./img/bg_effect2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+  position: fixed;
+  animation: bgEffect2 5s ease-in-out infinite alternate-reverse;
+  right: -30%;
+  bottom: 0;
 }
 
 #social img {
   width: 25px;
   margin: 10px 0;
+  cursor: pointer;
 }
 #social img:last-child {
-  margin-bottom:  0;
+  margin-bottom: 0;
 }
 
 @keyframes bgEffect {
@@ -137,6 +171,31 @@ h1, h2, h3 {
   }
   100% {
     opacity: 1;
+    transform: scale(0.9);
+    transform: skewX(-5deg);
+  }
+}
+@keyframes bgEffect2 {
+  0% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes bgEffectLogo {
+  0% {
+    opacity: 0.2;
+    transform: scale(1.2);
+    transform: skewX(5deg);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.4;
     transform: scale(0.9);
     transform: skewX(-5deg);
   }
