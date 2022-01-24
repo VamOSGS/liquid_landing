@@ -455,3 +455,67 @@ button:active {
     font-size: 16px;
   }
 }
+
+@media only screen and (max-width: 720px) {
+  header picture img {
+    width: 40vw;
+  }
+  .left {
+    text-align: center;
+    margin-bottom: 20%;
+  }
+  .left h1 {
+    font-size: 1.5em;
+    text-align: center;
+    letter-spacing: 15px;
+    flex-direction: row;
+  }
+  .left h3 {
+    display: block;
+    font-size: 18px;
+  }
+  .left h1 span:nth-child(2) {
+    margin-right: 10px;
+  }
+  .right h2 {
+    font-size: 1.5em;
+    text-align: center;
+  }
+  .right h3 {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+  .right p {
+    display: block;
+  }
+  #social {
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: 0 auto;
+    width: min-content;
+  }
+  #GET_BUTTON {
+    margin-top: 30px;
+  }
+  #social::after {
+    content: none;
+  }
+  .popup .content p {
+    font-size: medium;
+    margin: 25px 5px;
+  }
+  .popup .content {
+    height: auto;
+    width: auto;
+    padding: 50px;
+    margin: 10px;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .left h1 {
+    flex-wrap: wrap;
+    width: 75%;
+    margin: auto;
+  }
+}
